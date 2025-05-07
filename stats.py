@@ -11,3 +11,15 @@ def num_char(book):
         else:
             char_count[char] = 1
     return char_count
+
+def sort_on(char_count):
+    return char_count["num"]
+
+def finalReport(char_count):
+    report = []
+    for char, num in char_count.items():
+        report.append({"char":char, "num": num})
+    report.sort(reverse=True, key=sort_on)
+    return report
+
+
