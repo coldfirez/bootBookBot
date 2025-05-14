@@ -1,25 +1,27 @@
 def word_count(book):
-    num_words = book.split()
-    return len(num_words)
+    num_words = len(book.split())
+    return num_words
 
-def num_char(book):
-    char_count = {}
-    characters_lower = book.lower()
-    for char in characters_lower:
-        if char in char_count:
-            char_count[char] +=1
-        else:
-            char_count[char] = 1
-    return char_count
+def count_char(book):
+    char_counts = {}
+    lower_char = book.lower()
+    for char in lower_char:
+        if char.isalpha():
+            if char in char_counts:
+                char_counts[char] += 1
+            else:
+                char_counts[char] = 1
+    return char_counts
+    
+def sort_on(char_counts):
+    return char_counts["num"]
 
-def sort_on(char_count):
-    return char_count["num"]
+def sort_char_dict(char_counts):
+    sorted_list = []
 
-def finalReport(char_count):
-    report = []
-    for char, num in char_count.items():
-        report.append({"char":char, "num": num})
-    report.sort(reverse=True, key=sort_on)
-    return report
-
-
+    for char, count in char_counts.items():
+        if char.isalpha():
+            sorted_list.append({"char": char, "num": count})
+    
+    sorted_list.sort(reverse = True, key= sort_on)
+    return sorted_list
